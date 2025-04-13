@@ -58,7 +58,7 @@ class _FAQAdminState extends State<FAQAdmin> {
 // Edit FAQ data in Firestore
   Future<void> _editFAQ(String faqId, String newQuestion, String newAnswer) async {
     try {
-      await FirebaseFirestore.instance.collection('FAQs').doc(faqId).update({
+      await FirebaseFirestore.instance.collection('FAQ').doc(faqId).update({
         'question': newQuestion,
         'answer': newAnswer,
         'updatedAt': FieldValue.serverTimestamp(),
@@ -221,3 +221,4 @@ class FAQItem extends StatelessWidget {
     );
   }
 }
+
