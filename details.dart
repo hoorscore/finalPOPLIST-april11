@@ -29,7 +29,11 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
   Future<void> _fetchTasksFromFirestore() async {
     try {
-      QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('Task').get();
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('Task')
+          .where('completed', isEqualTo: false) // فقط غير المكتملة
+          .get();
+
       tasks = querySnapshot.docs.map((doc) {
         return {
           'id': doc.id,
